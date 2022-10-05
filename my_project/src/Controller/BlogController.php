@@ -1,6 +1,7 @@
 <?php
 namespace App\Controller;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\Routing\Annotation\Route;
 class BlogController
 {
     public function list()
@@ -15,6 +16,29 @@ class BlogController
         );
     }
     public function show($entryId)
+    {
+        return new Response(
+            '<html><body>Entrada ' . $entryId . '</body></html>'
+        );
+    }
+
+    /**
+    * @Route("/blog/{page}", name="blog_page", requirements={"page"="\d+"})
+    */
+
+    public function listPage($page)
+    {
+        return new Response(
+            '<html><body>Página ' . $page . '</body></html>'
+        );
+    }
+    /**
+
+    * @Route("/blog/{entryName}/{entryId}", name="blog_show_by_id")
+
+    */
+
+    public function showById($entryId)
     {
         return new Response(
             '<html><body>Entrada ' . $entryId . '</body></html>'

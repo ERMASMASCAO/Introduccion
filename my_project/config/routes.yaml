@@ -10,14 +10,6 @@ lucky_number:
     path: /lucky/number
     controller: App\Controller\LuckyController::numberAction
 
-blog_list:
-    path:     /blog
-    controller: App\Controller\BlogController::list
-
-blog_show:
-    path:     /blog/{entryId}
-    controller: App\Controller\BlogController::show
-
 blog_list_twig:
     path:     /blogtwig
     controller: App\Controller\BlogTwigController::list
