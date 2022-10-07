@@ -7,7 +7,7 @@
 <body>
 
     <h1>Ficha del contacto</h1>
-
+    {% if contacto %}
     <ul>
 
         <li><strong>{{ contacto.nombre}}</strong></li>
@@ -17,6 +17,9 @@
         <li><strong>Correo: </strong>{{ contacto.email}}</li>
 
     </ul>
+    {% else %}
+        <p>contacto no encontrado</p>
+    {% endif %}
 
 </body>
 
