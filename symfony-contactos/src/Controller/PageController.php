@@ -19,8 +19,8 @@ class PageController extends AbstractController
     /**
      *  @Route("/", name="inicio")
      */
-    public function inicio(): Response
+    public function inicio()
     {
-        return new Response("Bienvenido a la web de contactos");
+        return $this->render('inicio.html.twig');
     }
 }

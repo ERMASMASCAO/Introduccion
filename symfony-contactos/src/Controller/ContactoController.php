@@ -18,7 +18,7 @@ class ContactoController extends AbstractController
         9 => ["nombre" => "Nora Jover", "telefono" => "54565859", "email" => "norajover@ieselcaminas.org"]
     ];     
     /**
-    * @Route("/contacto/{codigo}", name="ficha_contacto")
+    * @Route("/contacto/{codigo<\d+>?1}", name="ficha_contacto")
     */
     public function ficha($codigo): Response{
        //Si no existe el elemento con dicha clave devolvemos null
