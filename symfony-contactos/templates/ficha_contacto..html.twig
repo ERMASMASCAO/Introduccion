@@ -1,26 +1,10 @@
-<!doctype html>
-
-<html>
-
-<meta charset="utf-8">
-
-<body>
-
+{% extends 'base.html.twig' %}
+{% block title %}Contactos{% endblock %}
+{% endblock body %}
     <h1>Ficha del contacto</h1>
     {% if contacto %}
-    <ul>
-
-        <li><strong>{{ contacto.nombre}}</strong></li>
-
-        <li><strong>Teléfono: </strong>{{ contacto.telefono}}</li>
-
-        <li><strong>Correo: </strong>{{ contacto.email}}</li>
-
-    </ul>
+        {{ include ('partials/datos_contacto.html.twig',{'contacto':contacto}) }}
     {% else %}
         <p>contacto no encontrado</p>
     {% endif %}
-
-</body>
-
-</html>
+{% endblock %}

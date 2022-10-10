@@ -5,11 +5,7 @@
     <h1>Listado de contactos</h1>
     {% if contactos %}
         {% for contacto in contactos %}
-        <ul>
-            <li><strong>{{ contacto.nombre}}</strong></li>
-            <li><strong>Teléfono:</strong>{{ contacto.telefono}}</li>
-            <li><strong>Correo:</strong>{{contacto.email}}</li>
-        </ul>
+            {{ include ('partials/datos_contacto.html.twig',{'contacto':contacto}) }}
         {% endfor %}
     {% else %}
         <p>No se han encontrado contactos</p>
