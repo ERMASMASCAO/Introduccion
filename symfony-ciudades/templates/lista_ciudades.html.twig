@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+{% block title %} Ciudades {% endblock %}
+{% block body %}
+    <h1>Listado de ciudades</h1>
+    {% if ciudades %}
+        {% for ciudad in ciudades %}
+            {{ include ('partials/datos_ciudad.html.twig', {'ciudad': ciudad}) }}
+        {% endfor %}
+    {% else %}
+        <p>No se han encontrado ciudades</p>
+    {% endif %}
+{% endblock %}
+

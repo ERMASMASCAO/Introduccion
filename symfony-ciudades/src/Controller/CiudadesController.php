@@ -16,25 +16,6 @@ class CiudadesController extends AbstractController
             'controller_name' => 'CiudadesController',
         ]);
     }
-    /**
-     * @Route("/ciudades/{codigo}", name= "ficha_ciudades")
-     */
-    public function ficha($codigo)
-    {
-        $resultado = ($this->ciudades[$codigo] ?? null);
-
-        if($resultado){
-            $html = "<ul>";
-                $html .= "<li>" . $codigo . "</li>";
-                $html .= "<li>" . $resultado['nombre'] ."</li>";
-                $html .= "<li>" . $resultado['habitantes'] ."</li>";
-                $html .= "<li>" . $resultado['alcalde'] ."</li>";
-            $html .= "</ul>";
-            return new Response("<html><body>$html</body>");
-        }else
-            return new Response("<html><body>Ciudades $codigo no encontrado</body>");
-    }
-
     private $ciudades = [
         1 => ["nombre" => "Castellon", "habitantes" => "524142432", "alcalde" => "juan"],
         2 => ["nombre" => "Castellon", "habitantes" => "524142432", "alcalde" => "juan"],
@@ -43,24 +24,32 @@ class CiudadesController extends AbstractController
         9 => ["nombre" => "Castellon", "habitantes" => "524142432", "alcalde" => "juan"],
 
     ];
-    
+    /**
+     * @Route("/ciudades/buscar/{texto}", name="buscar_ciudades")
+     */
     public function buscar($texto): Response{
-        $resultados= array_filter($this->ciudades
+        $resultados= array_filter($this->ciudades,
         function ($ciudades) use ($texto){
             return strpos($ciudades["nombre"],$texto) !== FALSE;
         }
     );
-    if (count($resultado)){
-        $html = "ul>";
-        foreach($resultados as $id => $resultado){
-            $html .= "<li>" . $id . "</li>";
-            $html .= "<li>" . $resultado['nombre'] ."</li>";
-            $html .= "<li>" . $resultado['habitantes'] ."</li>";
-            $html .= "<li>" . $resultado['alcalde'] ."</li>";
-        }
-        $html .= "</ul>";
-        return new Response("<html><body>$html</body>");        
+    return $this->render('lista:ciudades.html.twig',[
+        'ciudades' => $resultados
+    ]);
+}
 
-    }
+    /**
+
+* @Route("/contacto/{codigo}", name="ficha_contacto")
+
+*/
+
+    public function ficha($codigo): Response{
+        //Si no existe el elemento con dicha clave devolvemos null
+        $resultado = ($this->ciudades[$codigo] ?? null);
+        return $this->render('ficha_ciudades.html.twig', [
+        'ciudades' => $resultado
+        ]);
     }
 }
+

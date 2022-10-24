@@ -1,0 +1,10 @@
+{% extends 'base.html.twig' %}
+{% block title %}Ciudades{% endblock %}
+{% body %}
+    <h1>Ficha de Ciudades</h1>
+    {% if ciudades %}
+    {{ include ('partials/datos_ciudad.html.twig', {'ciudad': ciudad}) }}
+    {% else %}
+    <p>Ciudad no encontrada</p>
+    {% endif %}
+{% endblock %}

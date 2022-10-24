@@ -20,7 +20,7 @@ class InicioController extends AbstractController
      */
     public function inicio(): Response
     {
-        return new Response("Bienvenido a la web de Ciudades");
+        return $this->render('inicio.html.twig');
     }
     
 }
