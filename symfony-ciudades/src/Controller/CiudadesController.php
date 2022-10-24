@@ -24,6 +24,7 @@ class CiudadesController extends AbstractController
         9 => ["nombre" => "Castellon", "habitantes" => "524142432", "alcalde" => "juan"],
 
     ];
+    
     /**
      * @Route("/ciudades/buscar/{texto}", name="buscar_ciudades")
      */
