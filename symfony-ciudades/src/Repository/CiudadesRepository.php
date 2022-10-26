@@ -63,4 +63,13 @@ class CiudadesRepository extends ServiceEntityRepository
 //            ->getOneOrNullResult()
 //        ;
 //    }
+
+    public function findByname($text): array
+    {
+        $qb = $this->createQueryBuilder('c')
+        ->andWhere('c,nombre lIKE :text')
+        ->setParameter('text', '%' . $text . '%')
+        ->getQuery();
+        return $qb->execute();
+    }
 }

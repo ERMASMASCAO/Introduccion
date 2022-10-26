@@ -1,5 +1,7 @@
 <ul>
     <li><strong>{{ contacto.nombre }}</strong></li>
-    <li><strong>Teléfono</strong>: {{ contacto.telefono }}</li>
-    <li><strong>E-mail</strong>: {{ contacto.email }}</li>
+    <li><strong>Habitantes</strong>: {{ contacto.Habitantes }}</li>
+    {% if ciudades.paises %}
+    <li><strong>Paises: </strong>{{ciudades.paises.nombre}}</li>
+    <li><strong>Alcalde</strong>: {{ contacto.Alcalde }}</li>
 </ul>

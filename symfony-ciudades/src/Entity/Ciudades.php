@@ -22,6 +22,9 @@ class Ciudades
     #[ORM\Column(length: 15)]
     private ?string $alcalde = null;
 
+    #[ORM\ManyToOne(inversedBy: 'ciudades')]
+    private ?Pais $pais = null;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -59,6 +62,18 @@ class Ciudades
     public function setAlcalde(string $alcalde): self
     {
         $this->alcalde = $alcalde;
+
+        return $this;
+    }
+
+    public function getPais(): ?Pais
+    {
+        return $this->pais;
+    }
+
+    public function setPais(?Pais $pais): self
+    {
+        $this->pais = $pais;
 
         return $this;
     }
