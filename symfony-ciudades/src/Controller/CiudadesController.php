@@ -19,70 +19,55 @@ use Symfony\Component\BrowserKit\Request;
 
 class CiudadesController extends AbstractController
 {
-    /**
-    * @Route("/ciudades/nuevo", name="nuevo_ciudad")
+ /**
+    * @Route("/ciudades$ciudades/nuevo", name="nuevo_ciudades")
     */
-    public function nuevo(ManagerRegistry $doctrine, Request $request){
-        $ciudades=new Ciudades();
 
-        $formulario = $this->createFormBuilder($ciudades)
-            ->add('nombre', TextType::class)
-            ->add('habitantes', TextType::class)
-            ->add('alcalde', TextType::class)
-            ->add('save', SubmitType::class, array('label' => 'Enviar'))
-            ->add('pais', EntityType::class, array(
-                'class' => Pais::class,
-                'choice_label' => 'nombre',))
-            ->add('save', SubmitType::class, array('label' => 'Enviar'))
-            ->getForm();
-            $formulario->handleRequest($request);
+    public function nuevo(ManagerRegistry $doctrine, Request $request) 
+    {
+        $ciudades = new Ciudades();
 
-            if($formulario->isSubmitted() && $formulario->isValid()){
-                $ciudades = $formulario->getData();
-                $entityManager = $doctrine->getManager();
-                $entityManager -> persist($ciudades);
-                $entityManager->flush();
-                return $this -> redirectToRoute('ficha_ciudades', ["codigo" => $ciudades
-                ->getId()]);
-            }
+        $formulario = $this->createForm(ContactoType::class, $ciudades);
 
-            return $this->render('nuevo.html.twig', array(
-                'formulario' => $formulario->createView()
-        ));        
+        $formulario->handleRequest($request);
+
+        if ($formulario->isSubmitted() && $formulario->isValid()) {
+            $ciudades = $formulario->getData();
+            $entityManager = $doctrine->getManager();
+            $entityManager->persist($ciudades);
+            $entityManager->flush();
+            return $this->redirectToRoute('ficha_ciudades', ["codigo" => $ciudades->getId()]);
+        }
+        return $this->render('nuevo.html.twig', array(
+            'formulario' => $formulario->createView()
+        ));
     }
     /**
-    * @Route("/ciudades/editar/{codigo}", name="editar_ciudad", requirements = {"codigo"="\d+"})
+    * @Route("/ciudades$ciudades/editar/{codigo}", name="editar_ciudad",requirements={"codigo"="\d+"})
     */
-    public function editar(ManagerRegistry $doctrine, Request $request){
+    public function editar(ManagerRegistry $doctrine, Request $request, $codigo) 
+    {
         $repositorio = $doctrine->getRepository(Ciudades::class);
-        $ciudad = $repositorio->find($codigo);
-
-        $formulario = $this->createFormBuilder($ciudad)
-            ->add('nombre', TextType::class)
-            ->add('habitantes', TextType::class)
-            ->add('alcalde', TextType::class)
-            ->add('save', SubmitType::class, array('label' => 'Enviar'))
-            ->add('pais', EntityType::class, array(
-                'class' => Pais::class,
-                'choice_label' => 'nombre',))
-            ->add('save', SubmitType::class, array('label' => 'Enviar'))
-            ->getForm();
+        $ciudades = $repositorio->find($codigo);
+        if ($ciudades){
+            $formulario = $this->createForm(ContactoType::class, $ciudades);
             $formulario->handleRequest($request);
-
-            if($formulario->isSubmitted() && $formulario->isValid()){
+            if ($formulario->isSubmitted() && $formulario->isValid()) {
                 $ciudades = $formulario->getData();
                 $entityManager = $doctrine->getManager();
-                $entityManager -> persist($ciudades);
+                $entityManager->persist($ciudades);
                 $entityManager->flush();
-                return $this -> redirectToRoute('ficha_ciudades', ["codigo" => $ciudades
-                ->getId()]);
+                return $this->redirectToRoute('ficha_ciudades', ["codigo" => $ciudades->getId()]);
             }
-
             return $this->render('nuevo.html.twig', array(
                 'formulario' => $formulario->createView()
-        ));        
+            ));
+        }else{
+            return $this->render('ficha_ciudades.html.twig', [
+                'ciudades$ciudades' => NULL
+            ]);
+        }
     }
-
     /**
     *  @Route("/ciudades/insertar", name="insertar ciudades")
     */
