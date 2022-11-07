@@ -1,0 +1,63 @@
+{% extends 'base.html.twig' %}
+{% block title %}contact{% endblock %}
+{% block body %}
+<!-- Principal Content Start -->
+   <div id="contact">
+   	  <div class="container">
+   	    <div class="col-xs-12 col-sm-8 col-sm-push-2">
+       	   <h1>CONTACT US</h1>
+       	   <hr>
+       	   <p>Aut eaque, laboriosam veritatis, quos non quis ad perspiciatis, totam corporis ea, alias ut unde.</p>
+	       {{ form_start(form, {'attr': {'class':'form-horizontal'}}) }}
+			{{ form_errors(form) }}
+				<div class="form-group">
+					<div class="col-xs-6">
+						{{ form_row(form.firstName, {'attr': {'class':'form-control'}}) }}
+					</div>
+					<div class="col-xs-6">
+						{{ form_row(form.lastName, {'attr': {'class':'form-control'}}) }}
+					</div>
+				</div>
+				<div class="form-group">
+					<div class="col-xs-12">
+						{{ form_row(form.email, {'attr': {'class':'form-control'}}) }}
+					</div>
+				</div>
+				<div class="form-group">
+					<div class="col-xs-12">
+						{{ form_row(form.subject, {'attr': {'class':'form-control'}}) }}
+					</div>
+				</div>
+				<div class="form-group">
+					<div class="col-xs-12">
+						{{ form_row(form.message, {'attr': {'class':'form-control'}}) }}
+						{{ form_row(form.Send, {'attr': {'class':'pull-right btn btn-lg sr-button'}}) }}
+					</div>
+				</div>
+			{{ form_end(form) }}
+	       <hr class="divider">
+	       <div class="address">
+	           <h3>GET IN TOUCH</h3>
+	           <hr>
+	           <p>Sunt ut voluptatum eius sapiente, totam reiciendis temporibus qui quibusdam, recusandae sit vero.</p>
+		       <div class="ending text-center">
+			        <ul class="list-inline social-buttons">
+			            <li><a href="#"><i class="fa fa-facebook sr-icons"></i></a>
+			            </li>
+			            <li><a href="#"><i class="fa fa-twitter sr-icons"></i></a>
+			            </li>
+			            <li><a href="#"><i class="fa fa-google-plus sr-icons"></i></a>
+			            </li>
+			        </ul>
+				    <ul class="list-inline contact">
+				       <li class="footer-number"><i class="fa fa-phone sr-icons"></i>  (00228)92229954 </li>
+				       <li><i class="fa fa-envelope sr-icons"></i>  kouvenceslas93@gmail.com</li>
+				    </ul>
+				    <p>Photography Fanatic Template &copy; 2017</p>
+		       </div>
+	       </div>
+	    </div>   
+   	  </div>
+   </div>
+<!-- Principal Content Start -->
+{% endblock %}

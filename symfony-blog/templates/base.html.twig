@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-	  <title>PhotographItem-Responsive Theme</title>
+	  <title>{% block title%}PhotographItem-Responsive Theme{% endblock %}</title>
 
   	<!-- Bootstrap core css -->
   	<link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap.min.css">
@@ -24,81 +24,30 @@
     <![endif]-->
 </head>
 <body id="page-top">
+  {{ include ('partials/navigation.html.twig')}}
 
-<!-- Navigation Bar -->
-   <nav class="navbar navbar-fixed-top navbar-default">
-     <div class="container">
-         <div class="navbar-header">
-            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#menu">
-              <span class="sr-only">Toggle navigation</span>
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
- End of Index-body box -->
 
-    <!-- Newsletter form -->
-      <div class="index-form text-center">
-        <h3>SUSCRIBE TO OUR NEWSLETTER </h3>
-        <h5>Suscribe to receive our News and Gifts</h5>
-        <form class="form-horizontal">
-          <div class="form-group">
-            <div class="col-xs-12 col-sm-6 col-sm-push-3 col-md-4 col-md-push-4">
-            <input class="form-control" type="text" placeholder="Type here your email address">
-            <a href="" class="btn btn-lg sr-button">SUBSCRIBE</a>
-            </div>
-          </div>
-        </form>
-      </div>
-    <!-- End of Newsletter form -->  
-
-    <!-- Box within partners name and logo -->
-      <div class="last-box row">
-        <div class="col-xs-12 col-sm-4 col-sm-push-4 last-block">
-        <div class="partner-box text-center">
-          <p>
-          <i class="fa fa-map-marker fa-2x sr-icons"></i> 
-          <span class="text-muted">35 North Drive, Adroukpape, PY 88105, Agoe Telessou</span>
-          </p>
-          <h4>Our Main Partners</h4>
-          <hr>
-          <div class="text-muted text-left">
-            <ul class="list-inline">
-              <li><img src="images/index/log2.jpg" alt="logo"></li>
-              <li>First Partner Name</li>
-            </ul>
-            <ul class="list-inline">
-              <li><img src="images/index/log1.jpg" alt="logo"></li>
-              <li>Second Partner Name</li>
-            </ul>
-            <ul class="list-inline">
-              <li><img src="images/index/log3.jpg" alt="logo"></li>
-              <li>Third Partner Name</li>
-            </ul>
-          </div>
-        </div>
-        </div>
-      </div>
-    <!-- End of Box within partners name and logo -->
-
-   </div><!-- End of index box -->
+  {% block body %}{% endblock %}
 
    <!-- Footer -->
    <footer class="home-page">
      <div class="container text-muted text-center">
-       <div class="row">
-         <ul class="nav col-sm-4">
-           <li class="footer-number"><i class="fa fa-phone sr-icons"></i>  (00228)92229954 </li>
-           <li><i class="fa fa-envelope sr-icons"></i>  kouvenceslas93@gmail.com</li>
-           <li>Photography Fanatic Template &copy; 2017</li>
-         </ul>
-         <ul class="list-inline social-buttons col-sm-4 col-sm-push-4">
-            <li><a href="#"><i class="fa fa-facebook sr-icons"></i></a>
+      <div class="row">
+        <ul class="nav navbar-nav">
+            <li class="{{ (app.request.attributes.get('_route') == 'index')  ? 'active': ''}} lien"><a href="{{ path('index') }}">
+            <i class="fa fa-home sr-icons"></i> Home</a>
             </li>
-            <li><a href="#"><i class="fa fa-twitter sr-icons"></i></a>
+            <li class="{{ (app.request.attributes.get('_route') == 'about')  ? 'active': ''}} lien"><a href="{{ path('about') }}">
+            <i class="fa fa-bookmark sr-icons"></i> About</a>
             </li>
-            <li><a href="#"><i class="fa fa-google-plus sr-icons"></i></a>
+            <li class="{{ (app.request.attributes.get('_route') == 'blog')  ? 'active': ''}} lien"><a href="{{ path('blog') }}">
+            <i class="fa fa-file-text sr-icons"></i> Blog</a>
             </li>
-         </ul>
-       </div>
+            <li>"{{ (app.request.attributes.get('_route') == 'contact')  ? 'active': ''}}<a href="{{ path('contact') }}">
+            <i class="fa fa-phone-square sr-icons"></i> Contact</a>
+            </li>
+        </ul>
+      </div>
      </div>
    </footer>
 
