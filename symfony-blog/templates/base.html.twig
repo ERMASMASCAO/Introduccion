@@ -8,13 +8,13 @@
 	  <title>{% block title%}PhotographItem-Responsive Theme{% endblock %}</title>
 
   	<!-- Bootstrap core css -->
-  	<link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap.min.css">
+  	<link rel="stylesheet" type="text/css" href="{{ asset('bootstrap/css/bootstrap.min.css') }}">
   	<!-- Bootstrap core css -->
-  	<link rel="stylesheet" type="text/css" href="css/style.css">
+  	<link rel="stylesheet" type="text/css" href="{{ asset('css/style.css') }}">
   	<!-- Magnific-popup css -->
-  	<link rel="stylesheet" type="text/css" href="css/magnific-popup.css">
+  	<link rel="stylesheet" type="text/css" href="{{ asset('css/magnific-popup.css') }}">
   	<!-- Font Awesome icons -->
-  	<link rel="stylesheet" type="text/css" href="font-awesome/css/font-awesome.min.css">
+  	<link rel="stylesheet" type="text/css" href="{{ asset('font-awesome/css/font-awesome.min.css') }}">
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -43,7 +43,7 @@
             <li class="{{ (app.request.attributes.get('_route') == 'blog')  ? 'active': ''}} lien"><a href="{{ path('blog') }}">
             <i class="fa fa-file-text sr-icons"></i> Blog</a>
             </li>
-            <li>"{{ (app.request.attributes.get('_route') == 'contact')  ? 'active': ''}}<a href="{{ path('contact') }}">
+            <li class="{{ (app.request.attributes.get('_route') == 'contact')  ? 'active': ''}}"><a href="{{ path('contact') }}">
             <i class="fa fa-phone-square sr-icons"></i> Contact</a>
             </li>
         </ul>
@@ -52,13 +52,13 @@
    </footer>
 
    <!-- Jquery -->
-   <script type="text/javascript" src="js/jquery.min.js"></script>
+   <script type="text/javascript" src="{{ asset('js/jquery.min.js') }}"></script>
    <!-- Bootstrap core Javascript -->
-   <script type="text/javascript" src="bootstrap/js/bootstrap.min.js"></script>
+   <script type="text/javascript" src="{{ asset('bootstrap/js/bootstrap.min.js') }}"></script>
    <!-- Plugins -->
-   <script type="text/javascript" src="js/jquery.easing.min.js"></script>
-   <script type="text/javascript" src="js/jquery.magnific-popup.min.js"></script>
-   <script type="text/javascript" src="js/scrollreveal.min.js"></script>
-   <script type="text/javascript" src="js/script.js"></script>
+   <script type="text/javascript" src="{{ asset('js/jquery.easing.min.js') }}"></script>
+   <script type="text/javascript" src="{{ asset('js/jquery.magnific-popup.min.js') }}"></script>
+   <script type="text/javascript" src="{{ asset('js/scrollreveal.min.js') }}"></script>
+   <script type="text/javascript" src="{{ asset('js/script.js') }}"></script>
 </body>
 </html>
