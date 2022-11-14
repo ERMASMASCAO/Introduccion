@@ -5,7 +5,7 @@ namespace App\Controller;
 use App\Entity\Contact;
 use App\Form\ContactFormType;
 use Doctrine\Persistence\ManagerRegistry;
-
+use App\Entity\Category;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Request;
@@ -14,14 +14,16 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class PageController extends AbstractController
 {
-    /**
-     * @Route("/", name="index")
-     */
+    #[Route('/', name: 'index')]
     public function index(ManagerRegistry $doctrine, Request $request): Response
     {
-       
-        return $this->render('page/index.html.twig', []);
+    $repository = $doctrine->getRepository(Category::class);
+
+    $categories = $repository->findAll();
+
+    return $this->render('page/index.html.twig', ['categories' => $categories]);
     }
+
 
     /**
      * @Route("/", name="blog")
