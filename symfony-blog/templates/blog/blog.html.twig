@@ -1,0 +1,130 @@
+{% extends 'base.html.twig' %}
+{% block title%}Blog{% endblock %}
+{% block body%}
+<!-- Principal Content Start -->
+   <div id="blog">
+     <div class="container">
+      <div class="row">
+
+      <!-- Blocks of Posts -->
+        <div class="col-xs-12 col-sm-8 row">
+            {% for post in posts.results %}
+            {{ include ('partials/post.html.twig', {'post': post}) }}
+            {% endfor %}
+            {% if (app.request.attributes.get('_route') == 'blog') %}
+              {% if posts.hasToPaginate %}
+              <div class="text-left">
+                  <ul class="pagination">
+                      {% if posts.hasPreviousPage %}
+                          <li class="prev"><a href="{{ path('blog', {page: posts.previousPage}) }}" rel="previous"><i class="fa fw fa-long-arrow-left"></i> Previous</a></li>
+                      {% else %}
+                          <li class="prev disabled"><span><i class="fa fw fa-arrow-left"></i> Previous </span></li>
+                      {% endif %}
+
+                      {% for i in 1..posts.lastPage %}
+                          {% if i == posts.currentPage %}
+                              <li class="active"><span>{{ i }}</span></li>
+                          {% else %}
+                              <li><a href="{{ path('blog', {page: i}) }}">{{ i }}</a></li>
+                          {% endif %}
+                      {% endfor %}
+
+                      {% if posts.hasNextPage %}
+                          <li class="next"><a href="{{ path('blog', {page: posts.nextPage}) }}" rel="next">Next <i class="fa fw fa-arrow-right"></i></a></li>
+                      {% else %}
+                          <li class="next disabled"><span>Next <i class="fa fw fa-arrow-right"></i></span></li>
+                      {% endif %}
+                  </ul>
+              </div>
+              {% endif %}
+              {% else %}
+                {% if posts.hasToPaginate %}
+                        <div class="text-left">
+                          <ul class="pagination">
+                              {% if posts.hasPreviousPage %}
+                                  <li class="prev"><a href="{{ path('blog_buscar', {page: posts.previousPage}) }}?searchTerm={{searchTerm}}" rel="previous"><i class="fa fw fa-long-arrow-left"></i> Previous</a></li>
+                              {% else %}
+                                  <li class="prev disabled"><span><i class="fa fw fa-arrow-left"></i> Previous </span></li>
+                              {% endif %}
+
+                              {% for i in 1..posts.lastPage %}
+                                  {% if i == posts.currentPage %}
+                                      <li class="active"><span>{{ i }}</span></li>
+                                  {% else %}
+                                      <li><a href="{{ path('blog_buscar', {page: i}) }}?searchTerm={{searchTerm}}">{{ i }}</a></li>
+                                  {% endif %}
+                              {% endfor %}
+
+                              {% if posts.hasNextPage %}
+                                  <li class="next"><a href="{{ path('blog_buscar', {page: posts.nextPage}) }}?searchTerm={{searchTerm}}" rel="next">Next <i class="fa fw fa-arrow-right"></i></a></li>
+                              {% else %}
+                                  <li class="next disabled"><span>Next <i class="fa fw fa-arrow-right"></i></span></li>
+                              {% endif %}
+                          </ul>
+                      </div>
+                {% endif %}
+              {% endif %}
+        </div>
+      <!-- End of Blog Post -->  
+
+      <!-- Side bar -->  
+        <div class="col-xs-12 col-sm-4">
+           <form class="" action='{{ path('blog_buscar') }}'>
+              <input type="text" class="form-control" style="display:unset; width:85%" placeholder="Research" name='searchTerm'>
+              <button type='submit' class="btn btn-primary btn-danger"><i class="fa fa-search"></i>
+              </button>
+          </form>
+           <div class="panel">
+             <div class="panel-heading">
+               <h4>Categories</h4>
+             </div>
+             <div class="panel-body">
+               <ul class="nav">
+                 <li><a href="#">Category I</a></li>
+                 <li><a href="#">Category II</a></li>
+                 <li><a href="#">Category III</a></li>
+                 <li><a href="#">Category IV</a></li>
+                 <li class="last"><a href="#">Category V</a></li>
+               </ul>
+             </div>
+           </div>
+           <div class="well">
+             <h4>Soluta</h4>
+             <p>Quod soluta corrupti earum officia vel inventore vitae quidem, consequuntur odit impedit.</p>
+           </div>
+            <h3>Recent Posts</h3>
+            <hr>
+             <div class="post">
+               <div class="post-heading">
+                 <span>10 APRIL</span>
+                 <img class="img-responsive" src="images/blog/wedding.jpg" alt="post's picture">
+               </div>
+               <div class="post-body">
+                 <span>
+                 <i class="fa fa-heart sr-icons"></i> 10
+                 <i class="fa fa-comments sr-icons"></i> 10
+                 </span>
+                 <h4 class="text-left"><a href=""><strong>Aliquam soluta</strong></a></h4>
+               </div>
+             </div>
+             <div class="post">
+               <div class="post-heading">
+                 <span>12 MAY</span>
+                 <img class="img-responsive" src="images/blog/woman.jpg" alt="post's picture">
+               </div>
+               <div class="post-body">
+                 <span>
+                 <i class="fa fa-heart sr-icons"></i> 10
+                 <i class="fa fa-comments sr-icons"></i> 10
+                 </span>
+                 <h4 class="text-left"><a href=""><strong>Consequuntur</strong></a></h4>
+               </div>
+             </div>
+        </div>
+      <!-- End of Side bar --> 
+       
+      </div>
+     </div>
+   </div>
+<!-- End of Principal Content Start --> 
+{% endblock %}
