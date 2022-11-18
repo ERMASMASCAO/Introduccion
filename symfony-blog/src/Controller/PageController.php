@@ -2,10 +2,11 @@
 
 namespace App\Controller;
 
+use App\Entity\Category;
 use App\Entity\Contact;
 use App\Form\ContactFormType;
 use Doctrine\Persistence\ManagerRegistry;
-use App\Entity\Category;
+
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Request;
@@ -14,24 +15,16 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class PageController extends AbstractController
 {
-    #[Route('/', name: 'index')]
+    /**
+     * @Route("/", name="index")
+     */
     public function index(ManagerRegistry $doctrine, Request $request): Response
     {
-    $repository = $doctrine->getRepository(Category::class);
+        $repository = $doctrine->getRepository(Category::class);
 
-    $categories = $repository->findAll();
+        $categories = $repository->findAll();
 
-    return $this->render('page/index.html.twig', ['categories' => $categories]);
-    }
-
-
-    /**
-     * @Route("/", name="blog")
-     */
-    public function blog(ManagerRegistry $doctrine, Request $request): Response
-    {
-       
-        return $this->render('page/index.html.twig', []);
+        return $this->render('page/index.html.twig', ['categories' => $categories]);
     }
 
     /**
@@ -68,5 +61,4 @@ class PageController extends AbstractController
     {
         return $this->render('page/thankyou.html.twig', []);
     }
-
 }
