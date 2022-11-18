@@ -19,7 +19,7 @@
        <p>
        {{post.content}}
        </p>
-        <h4>- By {{ post.user.name}}</h4>
+        <h4>- By {{ post.postUser.name}}</h4>
         <hr>
         <ul class="list-inline">
           <li>{{ post.publishedAt | date('d') }} {{ post.publishedAt | date('F') }}</li>
@@ -31,7 +31,7 @@
         <h4>Recent Post</h4>
         <hr class="subtitle1">
         {% for recent in recents %}
-        {{ include ('partials/recent_post.html.twig', {'recent': recent}) }}
+        {{ include ('partials/_recent_post.html.twig', {'recent': recent}) }}
         {% endfor %}
       </div>
       </div>

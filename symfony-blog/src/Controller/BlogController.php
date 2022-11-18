@@ -31,7 +31,7 @@ class BlogController extends AbstractController
             'recents' => $recents,
             'searchTerm' => $searchTerm
         ]);
-    } 
+    }
     /**
      * @Route("/blog/new", name="new_post")
      */
@@ -46,33 +46,33 @@ class BlogController extends AbstractController
                 $originalFilename = pathinfo($file->getClientOriginalName(), PATHINFO_FILENAME);
                 // this is needed to safely include the file name as part of the URL
                 $safeFilename = $slugger->slug($originalFilename);
-                $newFilename = $safeFilename.'-'.uniqid().'.'.$file->guessExtension();
-        
+                $newFilename = $safeFilename . '-' . uniqid() . '.' . $file->guessExtension();
+
                 // Move the file to the directory where images are stored
                 try {
-                    
+
                     $file->move(
-                        $this->getParameter('post_image_directory'), $newFilename
+                        $this->getParameter('post_image_directory'),
+                        $newFilename
                     );
-                   
                 } catch (FileException $e) {
                     // ... handle exception if something happens during file upload
                 }
                 $post->setImage($newFilename);
             }
-        
-            $post = $form->getData();   
+
+            $post = $form->getData();
             $post->setSlug($slugger->slug($post->getTitle()));
-            $post->setUser($this->getUser());
+            $post->setPostUser($this->getUser());
             $post->setNumLikes(0);
             $post->setNumComments(0);
-            $entityManager = $doctrine->getManager();    
+            $entityManager = $doctrine->getManager();
             $entityManager->persist($post);
             $entityManager->flush();
             return $this->redirectToRoute('single_post', ["slug" => $post->getSlug()]);
         }
         return $this->render('blog/new_post.html.twig', array(
-            'form' => $form->createView()    
+            'form' => $form->createView()
         ));
     }
     /**
@@ -81,15 +81,14 @@ class BlogController extends AbstractController
     public function like(ManagerRegistry $doctrine, $slug): Response
     {
         $repository = $doctrine->getRepository(Post::class);
-        $post = $repository->findOneBy(["Slug"=>$slug]);
-        if ($post){
+        $post = $repository->findOneBy(["slug" => $slug]);
+        if ($post) {
             $post->setNumLikes($post->getNumLikes() + 1);
-            $entityManager = $doctrine->getManager();    
+            $entityManager = $doctrine->getManager();
             $entityManager->persist($post);
             $entityManager->flush();
         }
         return $this->redirectToRoute('single_post', ["slug" => $post->getSlug()]);
-
     }
     /**
      * @Route("/blog/{page}", name="blog")
@@ -98,7 +97,7 @@ class BlogController extends AbstractController
     {
         $repository = $doctrine->getRepository(Post::class);
         $posts = $repository->findAllPaginated($page);
-        
+
         return $this->render('blog/blog.html.twig', [
             'posts' => $posts,
         ]);
@@ -109,21 +108,23 @@ class BlogController extends AbstractController
     public function post(ManagerRegistry $doctrine, Request $request, $slug): Response
     {
         $repository = $doctrine->getRepository(Post::class);
-        $post = $repository->findOneBy(["Slug"=>$slug]);
+        $post = $repository->findOneBy(["slug" => $slug]);
         $recents = $repository->findRecents();
         $comment = new Comment();
         $form = $this->createForm(CommentFormType::class, $comment);
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
-            $comment = $form->getData(); 
-            $comment->setPost($post);  
+            $comment = $form->getData();
+            $comment->setPost($post);
             //Aumentamos el 1 el número de comentarios del post
             $post->setNumComments($post->getNumComments() + 1);
-            $entityManager = $doctrine->getManager();    
+            $entityManager = $doctrine->getManager();
             $entityManager->persist($comment);
             $entityManager->flush();
             return $this->redirectToRoute('single_post', ["slug" => $post->getSlug()]);
         }
+        // dump($post);
+        // exit;
         return $this->render('blog/single_post.html.twig', [
             'post' => $post,
             'recents' => $recents,

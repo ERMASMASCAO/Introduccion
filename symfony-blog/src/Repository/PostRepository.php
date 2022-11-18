@@ -53,9 +53,9 @@ class PostRepository extends ServiceEntityRepository
     public function findByTextPaginated(int $page, string $searchTerm)
     {
         $qb = $this->createQueryBuilder('p')
-            ->andWhere("p.Content LIKE :val")
+            ->andWhere("p.content LIKE :val")
             ->setParameter('val', '%'.$searchTerm.'%')
-            ->orderBy('p.PublishedAt', 'DESC');
+            ->orderBy('p.publishedAt', 'DESC');
         
         return (new Paginator($qb))->paginate($page);
     }
@@ -95,7 +95,7 @@ class PostRepository extends ServiceEntityRepository
     public function findRecents()
     {
         return $this->createQueryBuilder('p')
-            ->orderBy('p.PublishedAt', 'DESC')
+            ->orderBy('p.publishedAt', 'DESC')
             ->setMaxResults(5)
             ->getQuery()
             ->getResult()
