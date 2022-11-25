@@ -14,6 +14,12 @@
               <li class="{{ (app.request.attributes.get('_route') == 'index')  ? 'active': ''}} lien"><a href="{{ path('index') }}"><i class="fa fa-home sr-icons"></i> Blog</a></li>
               <li class="{{ (app.request.attributes.get('_route') == 'about')  ? 'active': ''}} lien"><a href="{{ path('about') }}"><i class="fa fa-bookmark sr-icons"></i> About</a></li>
               <li class="{{ (app.request.attributes.get('_route') == 'contact' or app.request.attributes.get('_route') == '`single_post`')  ? 'active': ''}} lien"><a href="{{ path('contact') }}"><i class="fa fa-phone-square sr-icons"></i> Contact</a></li>
+              {% if app.user %}
+            <li><a href="{{ path('app_logout') }}"><i class="fa fa-sign-out sr-icons"></i> {{ app.user.name }} - Logout</a></li>
+            {% else %}
+              <li class="{{ (app.request.attributes.get('_route') == 'app_login')  ? 'active': ''}} lien"><a href="{{ path('app_login') }}"><i class="fa fa-sign-in sr-icons"></i> Login</a></li>
+              <li class="{{ (app.request.attributes.get('_route') == 'app_register')  ? 'active': ''}} "><a href="{{ path('app_register') }}"><i class="fa fa-user-secret sr-icons"></i> Register</a></li>
+            {% endif %}
             </ul>
         </div>
     </nav>
