@@ -6,19 +6,16 @@ use App\Entity\Category;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Form\Extension\Core\Type\SubmitType;
+
 
 class CategoryFormType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-        ->add('file')
-        ->add('numLikes')
-        ->add('numViews')
-        ->add('numDownloads')
-        ->add('category', EntityType::class, array(
-            'class' => Category::class,
-            'choice_label' => 'name'))
+        ->add('name')
+        ->add('Send', SubmitType::class, ['attr' => ['class'=>'pull-right btn btn-lg sr-button']]);
     ;
     }
 
