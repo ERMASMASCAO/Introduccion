@@ -29,6 +29,11 @@ class Comments
     #[ORM\ManyToOne(inversedBy: 'comments')]
     private ?Post $post = null;
 
+    public function __construct()
+    {
+        $this->publishedAt = new \DateTime();
+    }
+
     public function getId(): ?int
     {
         return $this->id;

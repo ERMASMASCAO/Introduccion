@@ -2,6 +2,8 @@
 
 namespace App\Controller;
 
+use App\Entity\Comments;
+use App\Form\CommentFormType;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -10,7 +12,6 @@ use Doctrine\Persistence\ManagerRegistry;
 use Symfony\Component\String\Slugger\SluggerInterface;
 use App\Entity\Post;
 use Symfony\Component\HttpFoundation\Request;
-
 
 class BlogController extends AbstractController
 {
@@ -55,13 +56,31 @@ class BlogController extends AbstractController
         ));
         }
         
+
         #[Route('/video-page/{slug}', name: 'video-page')]
-        public function post(ManagerRegistry $doctrine, $slug): Response
+        public function post(ManagerRegistry $doctrine, $slug, Request $request): Response
         {
         $repositorio = $doctrine->getRepository(Post::class);
-        $post = $repositorio->findOneBy(["slug"=>$slug]);
+        $video = $repositorio->findOneBy(["slug"=>$slug]);
+
+        $comments = new Comments();
+        $form = $this->createForm(CommentFormType::class, $comments);
+        $form->handleRequest($request);
+        if ($form->isSubmitted() && $form->isValid()) {
+            $comments = $form->getData();
+            $comments->setPost($video);
+            //Aumentamos el 1 el número de comentarios del post
+            $video->setNumComments($video->getNumComments() + 1);
+            $entityManager = $doctrine->getManager();
+            $entityManager->persist($comments);
+            $entityManager->flush();
+            return $this->redirectToRoute('video-page', ["slug" => $video->getSlug()]);
+
+        
+        }
         return $this->render('blog/video-page.html.twig', [
-            'post' => $post,
+            'video' => $video,
+            'commentForm' => $form->createView()
         ]);
 }
 

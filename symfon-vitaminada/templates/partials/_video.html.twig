@@ -1,0 +1,17 @@
+ <div class="col-lg-4 col-md-6 col-sm-12 tm-catalog-item">
+    <div class="position-relative tm-thumbnail-container">
+     <iframe width="560" height="215" src="https://www.youtube.com/embed/{{post.video}}" 
+     title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    </div>    
+    <div class="p-4 tm-bg-gray tm-catalog-item-description">
+        <h3 class="tm-text-primary mb-3 tm-catalog-item-title"><a href="{{ path('video-page', {'slug':post.slug}) }}">{{ post.title }}</a></h3>
+        <p class="tm-catalog-item-text">
+        {{post.content}}
+        </p>
+    </div>
+    <div class="row box-content">
+        <ul class="list-inline text-center">
+            <li> <i class="fa fa-heart"></i> {{ post.numlikes  }}</li>
+        </ul>
+    </div>
+</div>

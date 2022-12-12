@@ -7,40 +7,43 @@
 						<div class="row mb-5 pb-4">
 							<div class="col-12">
 								<!-- Video player 1422x800 -->
-								<video width="1422" height="800" controls autoplay>
-								<source src="video/wheat-field.mp4" type="video/mp4">							  
-								Your browser does not support the video tag.
-								</video>
-							</div>
+							<iframe width="1080" height="720" src="https://www.youtube.com/embed/{{video.video}}" 
+							title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>							</div>
 						</div>
 						<div class="row mb-5 pb-5">
 							<div class="col-xl-8 col-lg-7">
 								<!-- Video description -->
 								<div class="tm-video-description-box">
-									<h2 class="mb-5 tm-video-title">Mauris dapibus urna nec ipsum posuere</h2>
-									<p class="mb-4">Cras dictum pretium est, et imperdiet ex. Fusce vitae vestibulum ipsum. Maecenas ultricies ipsum a urna ullamcorper, id interdum est blandit. Vivamus sit amet justo sed erat iaculis consequat. Nulla suscipit posuere lectus ut venenatis. Proin sed orci eget tellus euismod vulputate eu eu arcu.</p>
-									<p class="mb-4">Etiam a bibendum lorem. Curabitur ac bibendum odio. Vivamus euismod dui mauris, ut tincidunt mi congue quis. Phasellus luctus orci dolor, a luctus massa tincidunt vitae. Integer sit amet odio id libero tincidunt dignissim in eget arcu.</p>
-									<p class="mb-4">Aliquam tristique ut magna sit amet tincidunt. Sed tempor tellus nulla, molestie luctus lectus tincidunt id. Cras euismod leo a urna placerat, vel blandit turpis fermentum.</p>	
+									<h2 class="mb-5 tm-video-title">{{ video.title }}</h2>
+									<p>{{ video.content }}</p>
+									<div>
+									{% for comment in video.comments %}
+										<h1>{{comment.name}}: 
+											{{comment.text}}
+										</h1>	
+										{% endfor %}
+									</div>
 								</div>							
 							</div>
 							<div class="col-xl-4 col-lg-5">
 								<!-- Share box -->
 								<div class="tm-bg-gray tm-share-box">
-									<h6 class="tm-share-box-title mb-4">Share this video</h6>
-									<div class="mb-5 d-flex">
-										<a href="" class="tm-bg-white tm-share-button"><i class="fab fa-facebook"></i></a>
-										<a href="" class="tm-bg-white tm-share-button"><i class="fab fa-twitter"></i></a>
-										<a href="" class="tm-bg-white tm-share-button"><i class="fab fa-pinterest"></i></a>
-										<a href="" class="tm-bg-white tm-share-button"><i class="far fa-envelope"></i></a>
-									</div>
-									<a href="#" class="tm-bg-white px-5 mb-4 d-inline-block tm-text-primary tm-likes-box tm-liked">
-										<i class="fas fa-heart mr-3 tm-liked-icon"></i>
-										<i class="far fa-heart mr-3 tm-not-liked-icon"></i>
-										<span id="tm-likes-count">486 likes</span>
+									
+									<a href="{{ path('post_like', {slug: video.slug})  }}" class="tm-bg-white px-5 mb-4 d-inline-block tm-text-primary tm-likes-box tm-liked">
+										<i class="fa fa-heart sr-icons"></i>
+										<span id="tm-likes-count">{{video.numlikes}}</span>
 									</a>
-									<div>
-										<button class="btn btn-primary p-0 tm-btn-animate tm-btn-download tm-icon-download"><span>Download Video</span></button>	
-									</div>								
+									    <!-- Comments -->
+										<div class="row">
+										<div class="col-xs-12 col-sm-12 block2">
+											<hr class="line">
+												{{ include ('blog/comments.html.twig') }}
+											
+										</div>
+										</div>
+										<!-- End of Comments -->  
+										</div>
+																
 								</div>
 							</div>
 						</div>
