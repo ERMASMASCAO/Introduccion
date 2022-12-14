@@ -1,0 +1,18 @@
+<div class="navbar-nav ms-auto py-0">
+                <a href="{{ path('index') }}" class="nav-item nav-link {{ (app.request.attributes.get('_route') == 'index')  ? 'active': ''}}">Home</a>
+                <a href="{{ path('about') }}" class="nav-item nav-link {{ (app.request.attributes.get('_route') == 'about')  ? 'active': ''}}">About</a>
+                <a href="{{ path('service') }}" class="nav-item nav-link {{ (app.request.attributes.get('_route') == 'service')  ? 'active': ''}}">Service</a>
+                <a href="{{ path('product') }}" class="nav-item nav-link {{ (app.request.attributes.get('_route') == 'product')  ? 'active': ''}}">Product</a>
+                <div class="nav-item dropdown">
+                    <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Pages</a>
+                    <div class="dropdown-menu m-0">
+                        <a href="{{ path('price') }}" class="dropdown-item">Pricing Plan</a>
+                        <a href="{{ path('team') }}" class="dropdown-item">The Team</a>
+                        <a href="{{ path('testimonial') }}" class="dropdown-item">Testimonial</a>
+                        <a href="{{ path('blog') }}" class="dropdown-item">Blog Grid</a>
+                        <a href="{{ path('detail') }}" class="dropdown-item">Blog Detail</a>
+                    </div>
+                    
+                </div>
+                <a href="{{ path('contact') }}" class="nav-item nav-link nav-contact bg-primary text-white px-5 ms-lg-5">Contact <i class="bi bi-arrow-right"></i></a>
+            </div>
