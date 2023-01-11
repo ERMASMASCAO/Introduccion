@@ -5,14 +5,18 @@ namespace App\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Doctrine\Persistence\ManagerRegistry;
+use App\Entity\product;
+use App\Services\ProductsService;
 
 class ProductController extends AbstractController
 {
     #[Route('/product', name: 'product')]
-    public function index(): Response
+    public function index(ProductsService $ProductsService): Response
     {
-        return $this->render('product/index.html.twig', [
-            'controller_name' => 'ProductController',
-        ]);
+    $products = $ProductsService->getProducts();
+    return $this->render('product/product.html.twig', compact('products'));
     }
+
+
 }
