@@ -3,6 +3,7 @@
                 <a href="{{ path('about') }}" class="nav-item nav-link {{ (app.request.attributes.get('_route') == 'about')  ? 'active': ''}}">About</a>
                 <a href="{{ path('service') }}" class="nav-item nav-link {{ (app.request.attributes.get('_route') == 'service')  ? 'active': ''}}">Service</a>
                 <a href="{{ path('product') }}" class="nav-item nav-link {{ (app.request.attributes.get('_route') == 'product')  ? 'active': ''}}">Product</a>
+                <a href="/cart/" class="nav-item nav-link active"><i class="bi bi-cart"></i> Cart</a>
                 <div class="nav-item dropdown">
                     <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Pages</a>
                     <div class="dropdown-menu m-0">
@@ -11,6 +12,7 @@
                         <a href="{{ path('testimonial') }}" class="dropdown-item">Testimonial</a>
                         <a href="{{ path('blog') }}" class="dropdown-item">Blog Grid</a>
                         <a href="{{ path('detail') }}" class="dropdown-item">Blog Detail</a>
+                        
                     </div>
                     
                 </div>

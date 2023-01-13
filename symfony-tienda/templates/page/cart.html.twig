@@ -1,0 +1,52 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Cart{% endblock %}
+
+{% block body %}
+    <!-- Cart Start -->
+    <div class="container py-5">
+        <div class="row g-5">
+            <!-- Cart list Start -->
+            <div class="col-lg-8">
+                    {% for item in items %}
+                <div id="item-{{item.id}}" class="blog-item mb-5">
+                    <div class="row g-0 bg-light overflow-hidden">
+                        <div class="col-12 col-sm-5 h-100">
+                            <img class="img-fluid h-100" src="/img/product-1.png" style="object-fit: cover;">
+                        </div>
+                        <div class="col-12 col-sm-7 h-100 d-flex flex-column justify-content-center">
+                            <div class="p-4">
+                                <div class="d-flex mb-3">
+                                     <h4 class="text-uppercase border-start border-5 border-primary ps-3 mb-4">{{item.price}}</h4>
+                                </div>
+                                <h5 class="text-uppercase mb-3">{{item.name}}</h5>
+                                
+                                 <a data-id="{{item.id}}" href="" class="remove-item btn btn-primary py-2 px-4">Remove from cart</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+
+            </div>
+            
+            <!-- Cart list End -->
+
+            <!-- Sidebar Start -->
+            <div class="col-lg-4">
+                <!-- Plain Text Start -->
+                <div>
+                    <h3 class="text-uppercase border-start border-5 border-primary ps-3 mb-4">Cart</h3>
+                    <div class="bg-light text-center" style="padding: 30px;">
+                        <div class="d-flex mb-3">
+                                <h4 id="totalCart" class="text-uppercase ps-3 mb-4">Total 22 €</h4>
+                        </div>
+                        <a href="" class="btn btn-primary py-2 px-4">Checkout</a>
+                    </div>
+                </div>
+                <!-- Plain Text End -->
+            </div>
+            <!-- Sidebar End -->
+        </div>
+    </div>
+{% endblock %}
