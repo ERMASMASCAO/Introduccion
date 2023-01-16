@@ -1,0 +1,58 @@
+<html>
+    <head  lang="es">
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>{% block title %}Página Web base{% endblock %}
+        <link rel="shortcut icon" href="img/vaper2.jpg" type="image/x-icon">
+        <link rel="stylesheet" href="css/estilos.css">
+        <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700,800&display=swap" rel="stylesheet"> 
+    </head>
+
+    <body>
+        <header>
+            <nav>
+                <a href="index.html">Inicio</a>
+                <a href="empresa.html">Empresa</a>
+                <a href="CondicionesdeUso.html"> Condiciones de Uso</a>
+                <a href="#">Servicios</a>
+                <a href="register.html">Registrarse</a>
+            </nav>
+            <section class="textos-header">
+                <h1>VapersESP</h1>
+                <h2>Vapea como tu quieras</h2>
+            </section>
+            <div class="wave" style="height: 150px; overflow: hidden;">
+                <svg viewBox="0 0 500 150" preserveAspectRatio="none"
+                    style="height: 100%; width: 100%;">
+                    <path d="M0.00,49.98 C150.00,150.00 349.20,-50.00 500.00,49.98 L500.00,150.00 L0.00,150.00 Z"
+                        style="stroke: none; fill: #fff;"></path>
+                </svg>
+            </div>
+        </header>
+    </body>
+    {% block body %}
+
+    {% endblock %}
+
+    <footer>
+        <div class="contenedor-footer">
+            <div class="content-foo">
+                <h4>Telefono</h4>
+                <p>8296312</p>
+            </div>
+            <div class="content-foo">
+                <h4>Email</h4>
+                <p>VeperESP@gmail.com</p>
+            </div>
+            <div class="content-foo">
+                <h4>Ubicacion</h4>
+                <p>C/ Las vegas, 30, Castellón de la Plana, España
+                </p>
+            </div>
+        </div>
+        <h2 class="titulo-final">&copy; Daniel Prieto | 2º DAW</h2>
+    </footer>
+
+</html>
+    
