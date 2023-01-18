@@ -1,0 +1,7 @@
+<div class="navbar-nav ms-auto py-0">
+    <a href="{{ path('index') }}" class="nav-item nav-link {{ (app.request.attributes.get('_route') == 'index')  ? 'active': ''}}">Inicio</a>
+    <a href="{{ path('empresa') }}" class="nav-item nav-link {{ (app.request.attributes.get('_route') == 'empresa')  ? 'active': ''}}">Empresa</a>
+    <a href="{{ path('product') }}" class="nav-item nav-link {{ (app.request.attributes.get('_route') == 'product')  ? 'active': ''}}">Productos</a>
+    <a href="{{ path('service') }}" class="nav-item nav-link {{ (app.request.attributes.get('_route') == 'service')  ? 'active': ''}}">Servicios</a>
+    <a href="{{ path('contact') }}" class="nav-item nav-link nav-contact bg-primary text-white px-5 ms-lg-5">contact <i class="bi bi-arrow-right"></i></a>
+</div>
