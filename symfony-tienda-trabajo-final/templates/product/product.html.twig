@@ -1,98 +1,33 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Service{% endblock %}
+{% block title %}Product{% endblock %}
 
 {% block body %}
-<!-- Services Start -->
-<div class="container-fluid py-5">
-    <div class="container">
-        <div class="border-start border-5 border-primary ps-5 mb-5" style="max-width: 600px;">
-            <h6 class="text-primary text-uppercase">Services</h6>
-            <h1 class="display-5 text-uppercase mb-0">Our Excellent Vaper Care Services</h1>
-        </div>
-        <div class="row g-5">
-            <div class="col-md-6">
-                <div class="service-item bg-light d-flex p-4">
-                    <i class="fi fi-rr-info display-1 text-primary me-4"></i>
-                    <div>
-                        <h5 class="text-uppercase mb-3">Vaper consultorio</h5>
-                        <p>Kasd dolor no lorem sit tempor at justo rebum rebum stet justo elitr dolor amet sit</p>
-                        <a class="text-primary text-uppercase" href="">Read More<i class="bi bi-chevron-right"></i></a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-6">
-                <div class="service-item bg-light d-flex p-4">
-                    <i class="flaticon-food display-1 text-primary me-4"></i>
-                    <div>
-                        <h5 class="text-uppercase mb-3">Vaper arreglo</h5>
-                        <p>Kasd dolor no lorem sit tempor at justo rebum rebum stet justo elitr dolor amet sit</p>
-                        <a class="text-primary text-uppercase" href="">Read More<i class="bi bi-chevron-right"></i></a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-6">
-                <div class="service-item bg-light d-flex p-4">
-                    <i class="flaticon-grooming display-1 text-primary me-4"></i>
-                    <div>
-                        <h5 class="text-uppercase mb-3">Entrega a domicilio</h5>
-                        <p>Kasd dolor no lorem sit tempor at justo rebum rebum stet justo elitr dolor amet sit</p>
-                        <a class="text-primary text-uppercase" href="">Read More<i class="bi bi-chevron-right"></i></a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-6">
-                <div class="service-item bg-light d-flex p-4">
-                    <i class="flaticon-cat display-1 text-primary me-4"></i>
-                    <div>
-                        <h5 class="text-uppercase mb-3">Mantenimiento y arreglo</h5>
-                        <p>Kasd dolor no lorem sit tempor at justo rebum rebum stet justo elitr dolor amet sit</p>
-                        <a class="text-primary text-uppercase" href="">Read More<i class="bi bi-chevron-right"></i></a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-<!-- Services End -->
 
+{{ include ('product/_infoProducto.html.twig')}}
+{{ include ('product/_cart.html.twig')}}
 
-<!-- Testimonial Start -->
-<div class="container-fluid bg-testimonial py-5" style="margin: 45px 0;">
+    <main>
+<!-- Products Start -->
+    {{ render(controller('App\\Controller\\PageController::productTemplate')) }}
+<!-- Products End -->
+<!-- Offer Start -->
+<div class="container-fluid bg-offer my-5 py-5">
     <div class="container py-5">
-        <div class="row justify-content-end">
+        <div class="row gx-5 justify-content-start">
             <div class="col-lg-7">
-                <div class="owl-carousel testimonial-carousel bg-white p-5">
-                    <div class="testimonial-item text-center">
-                        <div class="position-relative mb-4">
-                            <img class="img-fluid mx-auto" src="img/testimonial-1.jpg" alt="">
-                            <div class="position-absolute top-100 start-50 translate-middle d-flex align-items-center justify-content-center bg-white" style="width: 45px; height: 45px;">
-                                <i class="bi bi-chat-square-quote text-primary"></i>
-                            </div>
-                        </div>
-                        <p>Dolores sed duo clita tempor justo dolor et stet lorem kasd labore dolore lorem ipsum. At lorem lorem magna ut et, nonumy et labore et tempor diam tempor erat. Erat dolor rebum sit ipsum.</p>
-                        <hr class="w-25 mx-auto">
-                        <h5 class="text-uppercase">Client Name</h5>
-                        <span>Profession</span>
-                    </div>
-                    <div class="testimonial-item text-center">
-                        <div class="position-relative mb-4">
-                            <img class="img-fluid mx-auto" src="img/testimonial-2.jpg" alt="">
-                            <div class="position-absolute top-100 start-50 translate-middle d-flex align-items-center justify-content-center bg-white" style="width: 45px; height: 45px;">
-                                <i class="bi bi-chat-square-quote text-primary"></i>
-                            </div>
-                        </div>
-                        <p>Dolores sed duo clita tempor justo dolor et stet lorem kasd labore dolore lorem ipsum. At lorem lorem magna ut et, nonumy et labore et tempor diam tempor erat. Erat dolor rebum sit ipsum.</p>
-                        <hr class="w-25 mx-auto">
-                        <h5 class="text-uppercase">Client Name</h5>
-                        <span>Profession</span>
-                    </div>
+                <div class="border-start border-5 border-dark ps-5 mb-5">
+                    <h6 class="text-dark text-uppercase">Super Oferta</h6>
+                    <h1 class="display-5 text-uppercase text-white mb-0">Ahorra un 5% al subscribirte y realizar tu primera compra superior a 50€</h1>
                 </div>
+                <p class="text-white mb-4">Eirmod sed tempor lorem ut dolores sit kasd ipsum. Dolor ea et dolore et at sea ea at dolor justo ipsum duo rebum sea. Eos vero eos vero ea et dolore eirmod et. Dolores diam duo lorem. Elitr ut dolores magna sit. Sea dolore sed et.</p>
+                <a href="{{ path('register') }}" class="btn btn-light py-md-3 px-md-5 me-3">Registrate</a>
+                <a href="{{ path('empresa') }}" class="btn btn-outline-light py-md-3 px-md-5">¿Quienes somo?</a>
             </div>
         </div>
     </div>
 </div>
-<!-- Testimonial End -->
+<!-- Offer End -->
 
 
 <!-- Pricing Plan Start -->
@@ -206,4 +141,6 @@
     </div>
 </div>
 <!-- Pricing Plan End -->
-{% endblock %}
+
+    </main>
+    {% endblock %}

@@ -30,6 +30,12 @@ class PageController extends AbstractController
         return $this->render('page/service.html.twig', []);
     }
 
+    #[Route('/register', name: 'register')]
+    public function register(): Response
+    {
+        return $this->render('registration/register.html.twig', []);
+    }
+
     #[Route('/contact', name: 'contact')]
     public function contact(): Response
     {
