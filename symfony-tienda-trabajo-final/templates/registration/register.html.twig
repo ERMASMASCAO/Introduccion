@@ -6,38 +6,39 @@
     <main>
         <div class="signupFrm">
             <div class="wrapper">
-                <form action="" class="form" id="formulario">
+            
+                {{ form_start(registrationForm) }}
                     <h1 class="title">Registrar</h1>
 
                     <div class="inputContainer">
-                    <input type="text" class="input" placeholder="a" id="email">
+                    <input type="text" name="registration_form_mail" class="input" placeholder="a" id="registration_form_email">
                     <label for="" class="label">Email</label>
                     </div>
 
                     <div class="inputContainer">
-                    <input type="text" class="input" placeholder="a">
+                    <input type="text" name="name" class="input" placeholder="a" id="name"> 
                     <label for="" class="label">Usuario</label>
                     </div>
 
                     <div class="inputContainer">
-                    <input type="text" class="input" placeholder="a" id="telefono">
+                    <input type="text" name="Telephone" class="input" placeholder="a" id="Telephone">
                     <label for="" class="label">Telefono</label>
                     </div>
 
                     <div class="inputContainer">
-                    <input type="text" class="input" placeholder="a" id="contraseña">
+                    <input type="text" name = "plainPassword" class="input" placeholder="a" id="plainPassword">
                     <label for="" class="label">Contraseña</label>
                     </div>
 
                     <div class="inputContainer">
-                    <input type="text" class="input" placeholder="a" id="contraseña2">
+                    <input type="text" class="input" placeholder="a" id="password">
                     <label for="" class="label">Confirmar Contraseña</label>
                     </div>
-
+                    {{ form_row(registrationForm.agreeTerms) }}
                     <input type="submit" class="submitBtn" value="Registrar" id="submit">
                     <input type="reset" class="submitBtn" value="Borrar los datos introducidos">
 
-                </form>
+                 </form>
             </div>
         </div>
     </main>

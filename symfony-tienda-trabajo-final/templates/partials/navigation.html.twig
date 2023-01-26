@@ -3,6 +3,7 @@
     <a href="{{ path('empresa') }}" class="nav-item nav-link {{ (app.request.attributes.get('_route') == 'empresa')  ? 'active': ''}}">Empresa</a>
     <a href="{{ path('product') }}" class="nav-item nav-link {{ (app.request.attributes.get('_route') == 'product')  ? 'active': ''}}">Productos</a>
     <a href="{{ path('service') }}" class="nav-item nav-link {{ (app.request.attributes.get('_route') == 'service')  ? 'active': ''}}">Servicios</a>
+    <a href="{{ path('cart') }}" class="nav-item nav-link {{ (app.request.attributes.get('_route') == 'cart')  ? 'active': ''}}">carrito</a>
     <a href="{{ path('register') }}" class="nav-item nav-link {{ (app.request.attributes.get('_route') == 'register')  ? 'active': ''}}">Registrarse</a>
     <a href="{{ path('contact') }}" class="nav-item nav-link nav-contact bg-primary text-white px-5 ms-lg-5">contact <i class="bi bi-arrow-right"></i></a>
 </div>
