@@ -3,43 +3,45 @@
 {% block title %}Register{% endblock %}
 
 {% block body %}
-    <main>
-        <div class="signupFrm">
-            <div class="wrapper">
-            
-                {{ form_start(registrationForm) }}
-                    <h1 class="title">Registrar</h1>
+<main>
+<div class="signupFrm">
+<div class="wrapper">
+<form action="" class="form" id="formulario">
+        <h1>Registrar</h1>
 
-                    <div class="inputContainer">
-                    <input type="text" name="registration_form_mail" class="input" placeholder="a" id="registration_form_email">
-                    <label for="" class="label">Email</label>
-                    </div>
-
-                    <div class="inputContainer">
-                    <input type="text" name="name" class="input" placeholder="a" id="name"> 
-                    <label for="" class="label">Usuario</label>
-                    </div>
-
-                    <div class="inputContainer">
-                    <input type="text" name="Telephone" class="input" placeholder="a" id="Telephone">
-                    <label for="" class="label">Telefono</label>
-                    </div>
-
-                    <div class="inputContainer">
-                    <input type="text" name = "plainPassword" class="input" placeholder="a" id="plainPassword">
-                    <label for="" class="label">Contraseña</label>
-                    </div>
-
-                    <div class="inputContainer">
-                    <input type="text" class="input" placeholder="a" id="password">
-                    <label for="" class="label">Confirmar Contraseña</label>
-                    </div>
-                    {{ form_row(registrationForm.agreeTerms) }}
-                    <input type="submit" class="submitBtn" value="Registrar" id="submit">
-                    <input type="reset" class="submitBtn" value="Borrar los datos introducidos">
-
-                 </form>
-            </div>
+        {{ form_start(registrationForm, {'attr': {'class':'form'}}) }}
+        <div class="inputContainer">
+            {{ form_widget(registrationForm.email,  {'attr': {'class':'input', 'placeholder': 'a'}}) }}
+            {{ form_label(registrationForm.email, null, {
+                label_attr: {class: 'label'}
+            }) }}
         </div>
-    </main>
+        <div class="inputContainer">
+            {{ form_widget(registrationForm.name,  {'attr': {'class':'input', 'placeholder': 'a'}}) }}
+            {{ form_label(registrationForm.name, null, {
+                label_attr: {class: 'label'}
+            }) }}
+        </div>
+        <div class="inputContainer">
+            {{ form_widget(registrationForm.Telephone,  {'attr': {'class':'input', 'placeholder': 'a'}}) }}
+            {{ form_label(registrationForm.Telephone, null, {
+                label_attr: {class: 'label'}
+            }) }}
+        </div>
+   
+        <div class="inputContainer">
+            {{ form_widget(registrationForm.plainPassword,  {'attr': {'class':'input', 'placeholder': 'a'}}) }}
+            {{ form_label(registrationForm.Telephone, null, {
+                label_attr: {class: 'label'}
+            }) }}
+        </div>
+            {{ form_row(registrationForm.agreeTerms) }}
+
+            <button type="submit" class="submitBtn">Registar</button>
+            <button type="reset" class="submitBtn">Borrar los Datos</button>
+
+        {{ form_end(registrationForm) }}
+</div>
+</div>
+</form>
 {% endblock %}
