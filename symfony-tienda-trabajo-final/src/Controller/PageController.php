@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Entity\Category;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -13,8 +14,9 @@ use App\Service\ProductService;
 class PageController extends AbstractController
 {
     #[Route('/', name: 'index')]
-    public function index(ProductService $ProductService): Response
+    public function index(ProductService $ProductService,ManagerRegistry $doctrine): Response
     {
+        
         $products = $ProductService->getProducts();
         return $this->render('page/index.html.twig', compact('products'));    }
 
@@ -42,6 +44,14 @@ class PageController extends AbstractController
     $repository = $doctrine->getRepository(Product::class);
     $products = $repository->findAll();
     return $this->render('partials/_product.html.twig',compact('products'));
+    }
+
+    #[Route('/category/{id}', name: 'category')]
+    public function category(ManagerRegistry $doctrine): Response
+    {
+        $repository = $doctrine->getRepository(Category::class);
+        $categories = $repository->find("category");
+        return $this->render('page/category.html.twig',compact('categories'));
     }
 }
 

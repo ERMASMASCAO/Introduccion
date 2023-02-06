@@ -1,9 +1,15 @@
-<div class="navbar-nav ms-auto py-0">
-    <a href="{{ path('index') }}" class="nav-item nav-link {{ (app.request.attributes.get('_route') == 'index')  ? 'active': ''}}">Inicio</a>
-    <a href="{{ path('empresa') }}" class="nav-item nav-link {{ (app.request.attributes.get('_route') == 'empresa')  ? 'active': ''}}">Empresa</a>
-    <a href="{{ path('product') }}" class="nav-item nav-link {{ (app.request.attributes.get('_route') == 'product')  ? 'active': ''}}">Productos</a>
-    <a href="{{ path('service') }}" class="nav-item nav-link {{ (app.request.attributes.get('_route') == 'service')  ? 'active': ''}}">Servicios</a>
-    <a href="{{ path('cart') }}" class="nav-item nav-link {{ (app.request.attributes.get('_route') == 'cart')  ? 'active': ''}}">carrito</a>
-    <a href="{{ path('register') }}" class="nav-item nav-link {{ (app.request.attributes.get('_route') == 'register')  ? 'active': ''}}">Registrarse</a>
-    <a href="{{ path('contact') }}" class="nav-item nav-link nav-contact bg-primary text-white px-5 ms-lg-5">contact <i class="bi bi-arrow-right"></i></a>
-</div>
+<nav class="">
+    <a href="{{ path('index') }}" class="{{ (app.request.attributes.get('_route') == 'index')  ? 'active': ''}}">Inicio</a>
+    <a href="{{ path('empresa') }}" class="{{ (app.request.attributes.get('_route') == 'empresa')  ? 'active': ''}}">Empresa</a>
+    <a href="{{ path('product') }}" class="{{ (app.request.attributes.get('_route') == 'product')  ? 'active': ''}}">Productos</a>
+    <a href="{{ path('service') }}" class="{{ (app.request.attributes.get('_route') == 'service')  ? 'active': ''}}">Servicios</a>
+    <a href="{{ path('app_cart') }}" class=" {{ (app.request.attributes.get('_route') == 'app_cart')  ? 'active': ''}}">carrito</a>
+    {% if app.user %}
+        <a href="{{ path('logout') }}" class=""> {{ app.user.name }} - Logout</a>
+    {% else %}
+        <a href="{{ path('login') }}"  class="{{ (app.request.attributes.get('_route') == 'login')  ? 'active': ''}}">Login</a>
+        <a href="{{ path('register') }}"  class=" {{ (app.request.attributes.get('_route') == 'register')  ? 'active': ''}}">Registrarse</a>
+    {% endif %}
+
+    <a href="{{ path('contact') }}" class="">contact <i class="bi bi-arrow-right"></i></a>
+</nav>
