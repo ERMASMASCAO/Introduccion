@@ -49,4 +49,15 @@ function validar(event){
         });
     })();
 
+    $(document).ready(function() {
+        $('#acordeon').accordion();
+    });
+
+    $(document).ready(function() {
+        $("h2").mouseenter(function() {
+          $("h2").animate({
+            "background-color": "yellow"
+            }, 1000);
+        });
+    });
 }
