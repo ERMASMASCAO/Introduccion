@@ -1,7 +1,7 @@
 window.onload = function(){
-    document.getElementById("email").focus();
-    document.getElementById("formulario").onsubmit = validar;
-    document.getElementById("formulario").onsubmit = limpiarFormulario;
+    // document.getElementById("registration_form_email").focus();
+    // document.getElementById("formulario").onsubmit = validar;
+    // document.getElementById("formulario").onsubmit = limpiarFormulario;
 
 
 }
@@ -48,16 +48,4 @@ function validar(event){
         infoProduct.modal('hide');
         });
     })();
-
-    $(document).ready(function() {
-        $('#acordeon').accordion();
-    });
-
-    $(document).ready(function() {
-        $("h2").mouseenter(function() {
-          $("h2").animate({
-            "background-color": "yellow"
-            }, 1000);
-        });
-    });
 }

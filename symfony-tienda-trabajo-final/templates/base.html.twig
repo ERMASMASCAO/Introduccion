@@ -3,29 +3,25 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
         <title>{% block title %}Página Web base{% endblock %}</title>
         <link rel="shortcut icon" href="img/vaper2.jpg" type="image/x-icon">
-        <link rel="stylesheet" href="{{asset('/css/estilos.css')}}">
         <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700,800&display=swap" rel="stylesheet">
-        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-        <script src="pagina.js"></script>
+        <link rel="stylesheet" href="//code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
+        <link rel="stylesheet" href="/resources/demos/style.css">
+        <link rel="stylesheet" href="{{asset('/css/estilos.css')}}">
         <!-- Favicon -->
         <link href="{{asset('img/favicon.ico')}}" rel="icon">
-
         <!-- Google Web Fonts -->
         <link rel="preconnect" href="https://fonts.gstatic.com">
         <link href="https://fonts.googleapis.com/css2?family=Poppins&family=Roboto:wght@700&display=swap" rel="stylesheet">  
-
         <!-- Icon Font Stylesheet -->
         <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
         <link href="{{asset('lib/flaticon/font/flaticon.css')}}" rel="stylesheet">
-
         <!-- Libraries Stylesheet -->
         <link href="{{asset('lib/owlcarousel/assets/owl.carousel.min.css')}}" rel="stylesheet">
-
         <!-- Customized Bootstrap Stylesheet -->
         <link href="{{asset('css/bootstrap.min.css')}}" rel="stylesheet">
-
         <!-- Template Stylesheet -->
         <link href="{{asset('css/style.css')}}" rel="stylesheet">
 
@@ -49,7 +45,7 @@
         
     
     {% block body %}
-
+    
     {% endblock %}
 
     <footer>
@@ -69,17 +65,25 @@
             </div>
         </div>
         <h2 class="titulo-final">&copy; Daniel Prieto | 2º DAW</h2>
+        <a src="#" id="back-to-top">AAAAAAAAAAAAAA</a>
     </footer>
+    
     <!-- JavaScript Libraries -->
-    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
     <script src="{{asset('lib/easing/easing.min.js')}}"></script>
     <script src="{{asset('lib/waypoints/waypoints.min.js')}}"></script>
     <script src="{{asset('lib/owlcarousel/owl.carousel.min.js')}}"></script>
-
     <!-- Template Javascript -->
     <script src="{{asset('js/main.js')}}"></script>
     <script src="{{asset('js/app.js')}}"></script>
+    <script src="{{asset('js/pagina.js')}}"></script>
+    <script src="{{asset('js/pagina2.js')}}"></script>
+
+
+
+
     
 </html>
     
