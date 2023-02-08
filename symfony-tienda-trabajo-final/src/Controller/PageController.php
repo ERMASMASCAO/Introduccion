@@ -18,7 +18,10 @@ class PageController extends AbstractController
     {
         
         $products = $ProductService->getProducts();
-        return $this->render('page/index.html.twig', compact('products'));    }
+
+        $repository = $doctrine->getRepository(Category::class);
+        $categories = $repository->findAll();
+        return $this->render('page/index.html.twig', compact('products', 'categories'));    }
 
     #[Route('/empresa', name: 'empresa')]
     public function empresa(): Response
@@ -45,13 +48,20 @@ class PageController extends AbstractController
     $products = $repository->findAll();
     return $this->render('partials/_product.html.twig',compact('products'));
     }
-
+    public function productCategoryTemplate($category, ManagerRegistry $doctrine): Response
+    {
+    $repository = $doctrine->getRepository(Product::class);
+    $products = $repository->findBy(["category"=>$category]);
+    
+    return $this->render('partials/_product.html.twig',compact('products'));
+    }
     #[Route('/category/{id}', name: 'category')]
-    public function category(ManagerRegistry $doctrine): Response
+    public function category(ManagerRegistry $doctrine, int $id): Response
     {
         $repository = $doctrine->getRepository(Category::class);
-        $categories = $repository->find("category");
-        return $this->render('page/category.html.twig',compact('categories'));
+        $category = $repository->find($id);
+      
+        return $this->render('page/category.html.twig',compact('category'));
     }
 }
 

@@ -1,0 +1,17 @@
+      
+<section class="portafolio">
+    <div class="contenedor">
+        <h2 class="titulo">NUESTROS PRODUCTOS</h2>
+        {% for category in categories %}
+        <div class="galeria-port">
+            <div class="imagen-port">
+                <img src="{{ asset('img/' ~ category.photo) }}" alt="">
+                <div class="hover-galeria">
+                <img src="img/icono1.png" alt="">
+                <p>{{ category.name }}</p>
+                </div>
+            </div>
+        </div>
+    {% endfor %}
+    </div>
+</section>
