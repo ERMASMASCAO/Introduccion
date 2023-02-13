@@ -87,7 +87,7 @@ class Category
 
         return $this;
     }
-    public function _toString(): string{
+    public function __toString(): string{
         return $this->name;
     }
     

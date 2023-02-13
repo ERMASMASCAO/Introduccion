@@ -2,15 +2,12 @@ window.onload = function(){
     // document.getElementById("registration_form_email").focus();
     // document.getElementById("formulario").onsubmit = validar;
     // document.getElementById("formulario").onsubmit = limpiarFormulario;
-
-
 }
 
 
 function limpiarFormulario(){
     document.getElementById("formulario").reset();
 }
-
 
 function validar(event){
     var valor = document.getElementById("contraseña").value;
@@ -29,8 +26,8 @@ function validar(event){
         alert("El telefono debe tener 9 dígitos");
         event.preventDefault();
     }
+    
     //Immediately-Invoked Function Expression (IIFE)
-
     (function(){
         const infoProduct = $("#infoProduct");
         $( "a.open-info-product" ).click(function(event) {

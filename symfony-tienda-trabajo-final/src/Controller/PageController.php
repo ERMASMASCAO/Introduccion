@@ -60,8 +60,10 @@ class PageController extends AbstractController
     {
         $repository = $doctrine->getRepository(Category::class);
         $category = $repository->find($id);
+        $product = $doctrine->getRepository(Product::class);
+        $products = $product->findBy(['category' => $category]);
       
-        return $this->render('page/category.html.twig',compact('category'));
+        return $this->render('page/category.html.twig',compact('category', 'products'));
     }
 }
 

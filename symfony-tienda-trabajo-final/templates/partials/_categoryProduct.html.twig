@@ -2,8 +2,9 @@
 <section class="portafolio">
     <div class="contenedor">
         <h2 class="titulo">NUESTROS PRODUCTOS</h2>
-        {% for category in categories %}
         <div class="galeria-port">
+        {% for category in categories %}
+        
             <div class="imagen-port">
                 <img src="{{ asset('img/' ~ category.photo) }}" alt="">
                 <div class="hover-galeria">
@@ -11,7 +12,8 @@
                 <p>{{ category.name }}</p>
                 </div>
             </div>
-        </div>
+        
     {% endfor %}
+         </div>
     </div>
 </section>
