@@ -1,0 +1,24 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Empresa{% endblock %}
+
+{% block body %}     
+    <section class="portafolio-modified">
+        <div class="contenedor">
+            <h2 class="titulo"></h2>
+            <div class="galeria-port-modified">
+            {% for product in products %}
+            
+                <div class="imagen-port-modified">
+                    <img src="{{ asset('img/' ~ product.photo) }}" alt="">
+                    <div class="hover-galeria-modified">
+                    <p class="text-primary mb-0"><strong>{{ product.name }}</strong></p>
+                <p class="text-primary mb-0"><strong>{{ product.price }}€</strong></p>
+                    </div>
+                </div>
+            
+        {% endfor %}
+            </div>
+        </div>
+    </section>
+{% endblock %}

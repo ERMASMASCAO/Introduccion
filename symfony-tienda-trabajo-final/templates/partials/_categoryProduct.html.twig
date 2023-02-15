@@ -1,18 +1,16 @@
       
 <section class="portafolio">
     <div class="contenedor">
-        <h2 class="titulo">NUESTROS PRODUCTOS</h2>
+        <h2 class="titulo">Nuestras Categorias</h2>
         <div class="galeria-port">
         {% for category in categories %}
-        
-            <div class="imagen-port">
+            <div class="imagen-port" onclick="javascript:location.href='{{ path('category', {'id':category.id}) }}'">
                 <img src="{{ asset('img/' ~ category.photo) }}" alt="">
                 <div class="hover-galeria">
                 <img src="img/icono1.png" alt="">
                 <p>{{ category.name }}</p>
                 </div>
             </div>
-        
     {% endfor %}
          </div>
     </div>
